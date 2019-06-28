@@ -17,25 +17,40 @@ class CartPage extends StatelessWidget {
     items = bloc.cart;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white.withOpacity(0),
-        elevation: 0.0,
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Text(
-              "R\$ ${price.format(bloc.total)}",
-              style: TextStyle(
-                fontSize: 30,
+      body: Container(
+        padding: EdgeInsets.only(
+          top: 60,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Expanded(
+              child: Loader(
+                object: bloc.cart,
+                callback: list,
               ),
             ),
-          ),
-        ],
-      ),
-      body: Container(
-        child: Loader(
-          object: bloc.cart,
-          callback: list,
+            Container(
+              height: 80,
+              padding: EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "R\$ ${price.format(bloc.total)}",
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+                  FlatButton(
+                    child: Text("Checkout"),
+                    color: Theme.of(context).primaryColor,
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

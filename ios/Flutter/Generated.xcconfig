@@ -1,7 +1,7 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/Users/balta/development/flutter
-FLUTTER_APPLICATION_PATH=/Users/balta/dev/temp/eshop
-FLUTTER_TARGET=/Users/balta/dev/temp/eshop/lib/main.dart
+FLUTTER_APPLICATION_PATH=/Users/balta/dev/cursos/7185
+FLUTTER_TARGET=/Users/balta/dev/cursos/7185/lib/main.dart
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build/ios
 FLUTTER_FRAMEWORK_DIR=/Users/balta/development/flutter/bin/cache/artifacts/engine/ios

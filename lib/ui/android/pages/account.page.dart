@@ -1,4 +1,5 @@
 import 'package:eshop/blocs/theme.bloc.dart';
+import 'package:eshop/ui/android/pages/login.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,6 +16,17 @@ class AccountPage extends StatelessWidget {
         children: <Widget>[
           SizedBox(
             height: 60,
+          ),
+          FlatButton(
+            child: Text("Login"),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginPage(),
+                ),
+              );
+            },
           ),
           Text("Tema atual: ${Settings.theme}"),
           FlatButton(
