@@ -5,6 +5,7 @@ import 'package:eshop/settings.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'blocs/user.bloc.dart';
 import 'ui/android/pages/tabs.page.dart';
 
 void main() => runApp(MyApp());
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<CartBloc>.value(
           value: CartBloc(),
         ),
+        ChangeNotifierProvider<UserBloc>.value(
+          value: UserBloc(),
+        ),
         ChangeNotifierProvider<ThemeBloc>.value(
           value: ThemeBloc(),
         ),
@@ -34,10 +38,6 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeBloc bloc = Provider.of<ThemeBloc>(context);
 
-    loadSettings().then((x) {
-      bloc.change(Settings.theme);
-    });
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'eShop',
@@ -48,11 +48,5 @@ class Main extends StatelessWidget {
         child: TabsPage(),
       ),
     );
-  }
-
-  Future loadSettings() async {
-    var prefs = await SharedPreferences.getInstance();
-    var theme = prefs.getString('theme');
-    Settings.theme = theme.isEmpty ? 'light' : theme;
   }
 }

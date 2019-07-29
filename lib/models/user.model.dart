@@ -1,10 +1,10 @@
 class UserModel {
-  int id;
+  String id;
   String name;
   String email;
   String image;
   String username;
-  Null password;
+  String password;
   String role;
   String token;
 

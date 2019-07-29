@@ -1,5 +1,8 @@
-import 'package:eshop/ui/shared/validators/custom-validators.dart';
+import 'package:eshop/blocs/user.bloc.dart';
+import 'package:eshop/models/authenticate.model.dart';
+import 'package:eshop/ui/android/pages/account.page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -8,10 +11,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  var username = '';
+  var password = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -19,10 +26,29 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           child: ListView(
             children: <Widget>[
+              // TextFormField(
+              //   keyboardType: TextInputType.emailAddress,
+              //   decoration: InputDecoration(
+              //     labelText: "Email",
+              //     labelStyle: TextStyle(
+              //       color: Theme.of(context).primaryColor,
+              //       fontWeight: FontWeight.w400,
+              //       fontSize: 16,
+              //     ),
+              //   ),
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     color: Theme.of(context).primaryColor,
+              //   ),
+              //   validator: (value) => CustomValidators.isEmail(value),
+              //   onSaved: (val) {
+              //     username = val;
+              //   },
+              // ),
               TextFormField(
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                  labelText: "Email",
+                  labelText: "Usuário",
                   labelStyle: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.w400,
@@ -34,10 +60,13 @@ class _LoginPageState extends State<LoginPage> {
                   color: Theme.of(context).primaryColor,
                 ),
                 validator: (value) {
-                  if (CustomValidators.isEmail(value)) {
-                    return 'E-mail Inválido';
+                  if (value.isEmpty) {
+                    return 'Usuário Inválido';
                   }
                   return null;
+                },
+                onSaved: (val) {
+                  username = val;
                 },
               ),
               SizedBox(
@@ -64,12 +93,16 @@ class _LoginPageState extends State<LoginPage> {
                   }
                   return null;
                 },
+                onSaved: (val) {
+                  password = val;
+                },
               ),
               FlatButton(
                 child: Text("Entrar"),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
+                    authenticate(context);
                   }
                 },
               ),
@@ -78,5 +111,24 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  authenticate(BuildContext context) async {
+    var bloc = Provider.of<UserBloc>(context);
+
+    var user = await bloc.authenticate(
+      new AuthenticateModel(
+        username: username,
+        password: password,
+      ),
+    );
+
+    if (user != null) {
+      Navigator.pop(context);
+      return;
+    }
+
+    final snackBar = SnackBar(content: Text('Usuário ou senha invalidos'));
+    _scaffoldKey.currentState.showSnackBar(snackBar);
   }
 }
