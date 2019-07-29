@@ -1,19 +1,18 @@
 import 'package:eshop/blocs/user.bloc.dart';
-import 'package:eshop/models/authenticate.model.dart';
-import 'package:eshop/ui/android/pages/account.page.dart';
+import 'package:eshop/models/create-user.model.dart';
+import 'package:eshop/ui/shared/validators/custom-validators.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget {
+class SignupPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  var username = '';
-  var password = '';
+  var user = new CreateUserModel();
 
   @override
   Widget build(BuildContext context) {
@@ -26,25 +25,55 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           child: ListView(
             children: <Widget>[
-              // TextFormField(
-              //   keyboardType: TextInputType.emailAddress,
-              //   decoration: InputDecoration(
-              //     labelText: "Email",
-              //     labelStyle: TextStyle(
-              //       color: Theme.of(context).primaryColor,
-              //       fontWeight: FontWeight.w400,
-              //       fontSize: 16,
-              //     ),
-              //   ),
-              //   style: TextStyle(
-              //     fontSize: 20,
-              //     color: Theme.of(context).primaryColor,
-              //   ),
-              //   validator: (value) => CustomValidators.isEmail(value),
-              //   onSaved: (val) {
-              //     username = val;
-              //   },
-              // ),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  labelText: "Nome",
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Theme.of(context).primaryColor,
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Nome Inválido';
+                  }
+                  return null;
+                },
+                onSaved: (val) {
+                  user.name = val;
+                },
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  labelText: "E-mail",
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Theme.of(context).primaryColor,
+                ),
+                validator: (value) => CustomValidators.isEmail(value),
+                onSaved: (val) {
+                  user.email = val;
+                },
+              ),
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
@@ -66,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
                 onSaved: (val) {
-                  username = val;
+                  user.username = val;
                 },
               ),
               SizedBox(
@@ -94,15 +123,15 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
                 onSaved: (val) {
-                  password = val;
+                  user.password = val;
                 },
               ),
               FlatButton(
-                child: Text("Entrar"),
+                child: Text("Cadastrar"),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
-                    authenticate(context);
+                    create(context);
                   }
                 },
               ),
@@ -113,22 +142,18 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  authenticate(BuildContext context) async {
+  create(BuildContext context) async {
     var bloc = Provider.of<UserBloc>(context);
+    var res = await bloc.create(user);
 
-    var user = await bloc.authenticate(
-      new AuthenticateModel(
-        username: username,
-        password: password,
-      ),
-    );
-
-    if (user != null) {
+    if (res == null) {
+      final snackBar =
+          SnackBar(content: Text('Não foi possível realizar seu cadastro'));
+      _scaffoldKey.currentState.showSnackBar(snackBar);
+    } else {
       Navigator.pop(context);
-      return;
+      final snackBar = SnackBar(content: Text('Bem-vindo! Autentique-se'));
+      _scaffoldKey.currentState.showSnackBar(snackBar);
     }
-
-    final snackBar = SnackBar(content: Text('Usuário ou senha invalidos'));
-    _scaffoldKey.currentState.showSnackBar(snackBar);
   }
 }

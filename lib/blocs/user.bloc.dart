@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:eshop/models/authenticate.model.dart';
+import 'package:eshop/models/create-user.model.dart';
 import 'package:eshop/models/user.model.dart';
 import 'package:eshop/repositories/account.repository.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,18 @@ class UserBloc extends ChangeNotifier {
 
       return res;
     } catch (ex) {
+      user = null;
+      return null;
+    }
+  }
+
+  Future<UserModel> create(CreateUserModel model) async {
+    try {
+      var repository = new AccountRepository();
+      var res = await repository.create(model);
+      return res;
+    } catch (ex) {
+      print(ex);
       user = null;
       return null;
     }
