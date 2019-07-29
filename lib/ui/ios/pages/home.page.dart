@@ -1,6 +1,7 @@
 import 'package:eshop/blocs/home.bloc.dart';
 import 'package:eshop/ui/shared/widgets/category/category-list.widget.dart';
 import 'package:eshop/ui/shared/widgets/product/product-list.widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,8 +10,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeBloc bloc = Provider.of<HomeBloc>(context);
 
-    return Scaffold(
-      body: Padding(
+    return CupertinoPageScaffold(
+      child: Padding(
         padding: EdgeInsets.all(10),
         child: ListView(
           children: <Widget>[

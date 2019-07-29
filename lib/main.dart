@@ -42,6 +42,7 @@ class Main extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'eShop',
       theme: bloc.theme,
+      // home: TabsPage(),
       home: DefaultTabController(
         length: 3,
         child: TabsPage(),
