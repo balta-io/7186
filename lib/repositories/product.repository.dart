@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:eshop/models/product-details.model.dart';
-import 'package:eshop/models/product-list-item.model.dart';
+import '../models/product-details.model.dart';
+import '../models/product-list-item.model.dart';
 import '../settings.dart';
 
 class ProductRepository {

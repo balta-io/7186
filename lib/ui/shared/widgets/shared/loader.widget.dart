@@ -1,4 +1,4 @@
-import 'package:eshop/ui/shared/widgets/shared/progress-indicator.widget.dart';
+import 'package:shopping/ui/shared/widgets/shared/progress-indicator.widget.dart';
 import 'package:flutter/widgets.dart';
 
 class Loader extends StatelessWidget {

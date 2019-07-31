@@ -1,9 +1,9 @@
-import 'package:eshop/blocs/cart.bloc.dart';
-import 'package:eshop/ui/android/pages/account.page.dart';
-import 'package:eshop/ui/android/pages/cart.page.dart';
-import 'package:eshop/ui/android/pages/home.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping/blocs/cart.bloc.dart';
+import 'package:shopping/ui/android/pages/account.page.dart';
+import 'package:shopping/ui/android/pages/cart.page.dart';
+import 'package:shopping/ui/android/pages/home.page.dart';
 
 class TabsPage extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class TabsPage extends StatelessWidget {
             icon: new Icon(Icons.home),
           ),
           Tab(
-            icon: new Row(
+            icon: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Icon(

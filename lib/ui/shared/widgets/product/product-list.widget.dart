@@ -1,5 +1,5 @@
-import 'package:eshop/models/product-list-item.model.dart';
-import 'package:eshop/ui/shared/widgets/shared/loader.widget.dart';
+import 'package:shopping/models/product-list-item.model.dart';
+import 'package:shopping/ui/shared/widgets/shared/loader.widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

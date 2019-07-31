@@ -1,8 +1,8 @@
-import 'package:eshop/blocs/user.bloc.dart';
-import 'package:eshop/models/create-user.model.dart';
-import 'package:eshop/ui/shared/validators/custom-validators.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping/blocs/user.bloc.dart';
+import 'package:shopping/models/create-user.model.dart';
+import 'package:shopping/ui/shared/validators/custom.validators.dart';
 
 class SignupPage extends StatefulWidget {
   @override

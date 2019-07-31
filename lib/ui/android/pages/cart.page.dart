@@ -1,7 +1,7 @@
-import 'package:eshop/blocs/cart.bloc.dart';
-import 'package:eshop/models/cart-item.model.dart';
-import 'package:eshop/ui/shared/widgets/cart/cart-item.widget.dart';
-import 'package:eshop/ui/shared/widgets/shared/loader.widget.dart';
+import 'package:shopping/blocs/cart.bloc.dart';
+import 'package:shopping/models/cart-item.model.dart';
+import 'package:shopping/ui/shared/widgets/cart/cart-item.widget.dart';
+import 'package:shopping/ui/shared/widgets/shared/loader.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';

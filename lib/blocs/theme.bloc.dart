@@ -1,9 +1,9 @@
-import 'package:eshop/themes/dark-yellow.theme.dart';
-import 'package:eshop/themes/dark.theme.dart';
-import 'package:eshop/themes/light.theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping/themes/dark-yellow.theme.dart';
+import 'package:shopping/themes/dark.theme.dart';
+import 'package:shopping/themes/light.theme.dart';
+
 import '../settings.dart';
 
 class ThemeBloc extends ChangeNotifier {

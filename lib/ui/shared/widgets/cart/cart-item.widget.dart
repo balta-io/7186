@@ -1,5 +1,5 @@
-import 'package:eshop/blocs/cart.bloc.dart';
-import 'package:eshop/models/cart-item.model.dart';
+import 'package:shopping/blocs/cart.bloc.dart';
+import 'package:shopping/models/cart-item.model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -85,7 +85,7 @@ class CartItem extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
+                )
               ],
             ),
           ),

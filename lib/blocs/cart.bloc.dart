@@ -1,4 +1,4 @@
-import 'package:eshop/models/cart-item.model.dart';
+import 'package:shopping/models/cart-item.model.dart';
 import 'package:flutter/widgets.dart';
 
 class CartBloc extends ChangeNotifier {

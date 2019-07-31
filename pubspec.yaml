@@ -1,4 +1,4 @@
-name: eshop
+name: shopping
 description: A new Flutter project.
 
 # The following defines the version and build number for your application.
@@ -34,7 +34,7 @@ dev_dependencies:
 
 
 # For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
+# following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:

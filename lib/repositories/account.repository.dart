@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:eshop/models/authenticate.model.dart';
-import 'package:eshop/models/create-user.model.dart';
-import 'package:eshop/models/user.model.dart';
+import 'package:shopping/models/authenticate-user.model.dart';
+import 'package:shopping/models/create-user.model.dart';
+import 'package:shopping/models/user.model.dart';
 import '../settings.dart';
 
 class AccountRepository {

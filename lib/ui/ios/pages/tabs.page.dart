@@ -1,6 +1,6 @@
-import 'package:eshop/ui/ios/pages/home.page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping/ui/ios/pages/home.page.dart';
 
 class TabsPage extends StatelessWidget {
   @override

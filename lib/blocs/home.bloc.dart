@@ -1,12 +1,12 @@
-import 'package:eshop/models/category-list-item.model.dart';
-import 'package:eshop/models/product-list-item.model.dart';
-import 'package:eshop/repositories/category.repository.dart';
-import 'package:eshop/repositories/product.repository.dart';
+import '../models/category-list-item.model.dart';
+import '../models/product-list-item.model.dart';
+import '../repositories/category.repository.dart';
+import '../repositories/product.repository.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeBloc extends ChangeNotifier {
-  final categoryService = new CategoryRepository();
-  final productService = new ProductRepository();
+  final categoryRepository = new CategoryRepository();
+  final productRepository = new ProductRepository();
 
   List<ProductListItemModel> products;
   List<CategoryListItemModel> categories;
@@ -18,21 +18,21 @@ class HomeBloc extends ChangeNotifier {
   }
 
   getCategories() {
-    categoryService.getAll().then((data) {
+    categoryRepository.getAll().then((data) {
       this.categories = data;
       notifyListeners();
     });
   }
 
   getProducts() {
-    productService.getAll().then((data) {
+    productRepository.getAll().then((data) {
       this.products = data;
       notifyListeners();
     });
   }
 
   getProductsByCategory() {
-    productService.getByCategory(selectedCategory).then((data) {
+    productRepository.getByCategory(selectedCategory).then((data) {
       this.products = data;
       notifyListeners();
     });
@@ -45,5 +45,3 @@ class HomeBloc extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-class Product {}

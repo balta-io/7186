@@ -1,7 +1,8 @@
-import 'package:eshop/blocs/theme.bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping/blocs/theme.bloc.dart';
+
 import '../../../settings.dart';
 
 class SettingsPage extends StatelessWidget {

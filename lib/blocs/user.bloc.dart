@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'package:eshop/models/authenticate.model.dart';
-import 'package:eshop/models/create-user.model.dart';
-import 'package:eshop/models/user.model.dart';
-import 'package:eshop/repositories/account.repository.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopping/models/authenticate-user.model.dart';
+import 'package:shopping/models/create-user.model.dart';
+import 'package:shopping/models/user.model.dart';
+import 'package:shopping/repositories/account.repository.dart';
+
 import '../settings.dart';
 
 class UserBloc extends ChangeNotifier {
@@ -27,6 +28,7 @@ class UserBloc extends ChangeNotifier {
 
       return res;
     } catch (ex) {
+      print(ex);
       user = null;
       return null;
     }

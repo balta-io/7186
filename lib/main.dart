@@ -1,12 +1,10 @@
-import 'package:eshop/blocs/cart.bloc.dart';
-import 'package:eshop/blocs/home.bloc.dart';
-import 'package:eshop/blocs/theme.bloc.dart';
-import 'package:eshop/settings.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'blocs/user.bloc.dart';
-import 'ui/android/pages/tabs.page.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping/blocs/cart.bloc.dart';
+import 'package:shopping/blocs/home.bloc.dart';
+import 'package:shopping/blocs/theme.bloc.dart';
+import 'package:shopping/blocs/user.bloc.dart';
+import 'package:shopping/ui/android/pages/tabs.page.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,8 +37,8 @@ class Main extends StatelessWidget {
     final ThemeBloc bloc = Provider.of<ThemeBloc>(context);
 
     return MaterialApp(
+      title: 'Shopping Cart',
       debugShowCheckedModeBanner: false,
-      title: 'eShop',
       theme: bloc.theme,
       // home: TabsPage(),
       home: DefaultTabController(

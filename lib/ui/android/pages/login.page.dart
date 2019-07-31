@@ -1,8 +1,7 @@
-import 'package:eshop/blocs/user.bloc.dart';
-import 'package:eshop/models/authenticate.model.dart';
-import 'package:eshop/ui/android/pages/account.page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping/blocs/user.bloc.dart';
+import 'package:shopping/models/authenticate-user.model.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -26,25 +25,6 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           child: ListView(
             children: <Widget>[
-              // TextFormField(
-              //   keyboardType: TextInputType.emailAddress,
-              //   decoration: InputDecoration(
-              //     labelText: "Email",
-              //     labelStyle: TextStyle(
-              //       color: Theme.of(context).primaryColor,
-              //       fontWeight: FontWeight.w400,
-              //       fontSize: 16,
-              //     ),
-              //   ),
-              //   style: TextStyle(
-              //     fontSize: 20,
-              //     color: Theme.of(context).primaryColor,
-              //   ),
-              //   validator: (value) => CustomValidators.isEmail(value),
-              //   onSaved: (val) {
-              //     username = val;
-              //   },
-              // ),
               TextFormField(
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(

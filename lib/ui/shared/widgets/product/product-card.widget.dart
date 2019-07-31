@@ -1,8 +1,8 @@
-import 'package:eshop/models/product-list-item.model.dart';
-import 'package:eshop/ui/android/pages/product.page.dart';
-import 'package:eshop/ui/shared/widgets/shared/add-to-cart.widget.dart';
+import 'package:shopping/models/product-list-item.model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:shopping/ui/android/pages/product.page.dart';
+import 'package:shopping/ui/shared/widgets/shared/add-to-cart.widget.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductListItemModel item;
@@ -14,7 +14,6 @@ class ProductCard extends StatelessWidget {
     final price = new NumberFormat("#,##0.00", "pt_BR");
 
     return Container(
-      //padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(5),
       width: 240,
       decoration: BoxDecoration(
@@ -32,8 +31,8 @@ class ProductCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductPage(
-                        tag: item.tag,
-                      ),
+                    tag: item.tag,
+                  ),
                 ),
               );
             },

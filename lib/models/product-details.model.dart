@@ -1,4 +1,4 @@
-import 'category.dart';
+import 'category.model.dart';
 
 class ProductDetailsModel {
   String id;
